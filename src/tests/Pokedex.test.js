@@ -131,23 +131,21 @@ describe('5. Teste o componente <Pokedex.js />', () => {
       const nextPkmnBtn = screen.getByRole('button', { name: /Próximo pokémon/i });
       userEvent.click(nextPkmnBtn);
     };
-    pokemons.forEach((pokemon) => {
-      const pkmnName = screen.getByTestId(POKEMON_NAME);
-      expect(pkmnName).toHaveTextContent(pokemon.name);
-      clickNextPkmn();
-    });
+    const clickAll = () => {
+      pokemons.forEach((pokemon) => {
+        const pkmnName = screen.getByTestId(POKEMON_NAME);
+        expect(pkmnName).toHaveTextContent(pokemon.name);
+        clickNextPkmn();
+      });
+    };
+    clickAll();
     // // O texto do botão deve ser 'All';
     const allBtn = screen.getByRole('button', { name: /all/i });
     expect(allBtn).toBeInTheDocument();
     // // A Pokedéx deverá mostrar os pokémons normalmente (sem filtros)
     // // quando o botão 'All' for clicado;
     userEvent.click(allBtn);
-    pokemons.forEach((pokemon) => {
-      const pkmnName = screen.getByTestId(POKEMON_NAME);
-      expect(pkmnName).toHaveTextContent(pokemon.name);
-      clickNextPkmn();
-    });
+    clickAll();
     // // Ao carregar a página, o filtro selecionado deverá ser 'All';
-
   });
 });
