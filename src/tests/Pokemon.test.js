@@ -77,7 +77,7 @@ describe('6. Teste o componente <Pokemon.js />', () => {
     expect(pkmnDetailsLink).toBeInTheDocument();
     userEvent.click(pkmnDetailsLink);
     expect(history.location.pathname).not.toBe('/');
-    expect(history.location.pathname).toBe(PIKACHU_URL);
+    // expect(history.location.pathname).toBe(PIKACHU_URL);
   });
 
   test('Teste também se a URL exibida no navegador muda para "/pokemon/<id>"', () => {
@@ -90,8 +90,8 @@ describe('6. Teste o componente <Pokemon.js />', () => {
     const pkmnDetailsLink = screen.getByRole('link', { name: /More details/i });
     expect(pkmnDetailsLink).toBeInTheDocument();
     userEvent.click(pkmnDetailsLink);
-    expect(history.location.pathname).not.toBe('/');
-    // expect(history.location.pathname).toBe(PIKACHU_URL);
+    // expect(history.location.pathname).not.toBe('/');
+    expect(history.location.pathname).toBe(PIKACHU_URL);
   });
 
   test('Teste se existe um ícone de estrela nos pokémons favoritados.', () => {
